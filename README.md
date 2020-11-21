@@ -4,11 +4,11 @@ Website running at:
 
 https://hardcore-spence-9ac3f9.netlify.app/
 
-**Latest Block
+**Latest Block**
 
 <img src="/img/jsflatest.png" width="500">
 
-**Search Block by Hash or Number
+**Search Block by Hash or Number**
 
 <img src="/img/jsfsearch.png" width="500">
 
