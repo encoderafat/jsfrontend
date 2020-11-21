@@ -18,6 +18,7 @@ const Block = () => {
         const api = await ApiPromise.create({ provider: wsProvider });
         
         // Retrieve the latest header
+        
         const lastHeader = await api.rpc.chain.getHeader();
 
         setNumber(lastHeader.number.toString());
