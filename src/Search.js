@@ -18,31 +18,29 @@ const Search = () => {
     const [bNumber,setBNumber] = useState(0);
     const [sHash, setSHash] = useState(null);
 
-    const chainState = async () => {
-        const wsProvider = new WsProvider('wss://rpc.polkadot.io');
-        const api = await ApiPromise.create({ provider: wsProvider });
-
-        if (sHash) {
-            // Retrieve the latest header
-            const lastHeader = await api.rpc.chain.getHeader(sHash);
-
-            setNumber(lastHeader.number.toString());
-            setHash(lastHeader.hash.toString());
-            setParentHash(lastHeader.parentHash.toString());
-            setStateRoot(lastHeader.stateRoot.toString());
-            setExtrinsicsRoot(lastHeader.extrinsicsRoot.toString());
-
-            setLoading(false);
-            setShowCard(true);
-            return 1;
-        } else {
-            return 0;
-        }
-        
-        
-    } 
-
     useEffect(() => {
+        const chainState = async () => {
+            const wsProvider = new WsProvider('wss://rpc.polkadot.io');
+            const api = await ApiPromise.create({ provider: wsProvider });
+    
+            if (sHash) {
+                // Retrieve the latest header
+                const lastHeader = await api.rpc.chain.getHeader(sHash);
+    
+                setNumber(lastHeader.number.toString());
+                setHash(lastHeader.hash.toString());
+                setParentHash(lastHeader.parentHash.toString());
+                setStateRoot(lastHeader.stateRoot.toString());
+                setExtrinsicsRoot(lastHeader.extrinsicsRoot.toString());
+    
+                setLoading(false);
+                setShowCard(true);
+                return 1;
+            } else {
+                return 0;
+            }
+        } 
+        
         chainState();
     },[sHash])
 
